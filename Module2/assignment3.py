@@ -4,14 +4,13 @@ import pandas as pd
 # Ensuring you set the appropriate header column names
 #
 # .. your code here ..
-
-
+dt = pd.read_csv('Module2/Datasets/servo.data', header=None, names=['motor', 'screw', 'pgain', 'vgain', 'class'])
 # TODO: Create a slice that contains all entries
 # having a vgain equal to 5. Then print the 
 # length of (# of samples in) that slice:
 #
-# .. your code here ..
-
+dt[dt.vgain==5]
+print(len(dt[dt.vgain==5]))
 
 # TODO: Create a slice that contains all entries
 # having a motor equal to E and screw equal

@@ -7,9 +7,21 @@ import numpy as np
 # Load up the dataset, setting correct header labels.
 #
 # .. your code here ..
+df = pd.DataFrame(pd.read_csv('Datasets/census.data', header=None))
+df = df.drop(labels=[0],axis=1)
+df = df.dropna(axis=0)
+df.columns = ['education', 'age', 'capital-gain', 'race', 'capital-loss', 'hours-per-week', 'sex', 'classification']
+df = df.dropna(axis=0)
+df = df.drop(df[df['capital-gain'] == '?'].index)
 
-
-
+# df[is.na(df.age)]
+for col in ['age', 'capital-gain', 'capital-loss', 'hours-per-week'] :
+    dt[col] = pd.to_numeric(dt[col], errors='coerce')
+    
+df = pd.get_dummies(df,columns=['education'])
+df = pd.get_dummies(df,columns=['race'])
+df = pd.get_dummies(df,columns=['vertebrates'])
+df = pd.get_dummies(df,columns=['sex'])
 #
 # TODO:
 # Use basic pandas commands to look through the dataset... get a
